@@ -1,3 +1,7 @@
+/* 1) build and examine this code
+   2) correct the mistake: it is possible to hang on wait. Why and when? (see "man fork")
+ */
+
 #include <unistd.h>
 #include <sys/wait.h>
 #include <stdio.h>
