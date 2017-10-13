@@ -23,12 +23,10 @@ int main() {
    	char line[1000];
    	while(1) {
    		printf("Write Name and Args through a Space!\n");
-   		int i = 0, k = 2, j = 0;
+   		int i = 0, k = 0, j = 0;
 	   	fgets(line, 1000, stdin);
 	   	int len = strlen(line);
 	 	
-	 	a[0][0] = '.';
-	 	a[0][1] = '/';
 		for (; i < len; ++i) {
 			if (line[i] == ' ') {
 				a[j][k] = '\0';
@@ -44,18 +42,13 @@ int main() {
 		if (j == 1) {
 			a[j][k-1] = '\0';
 		} 
-		len = strlen(a[0]);
-		k = 0;
-		for(i = 2; i < len; ++i) {
-			a[2][k++] = a[0][i];
-		}
-		a[2][k] = '\0';
+		
 	   	switch(pid = fork()) {
 	   		case -1:
 	   			printf("fork error\n");
 	   		case 0:
 	   			if (j == 1) {
-					if (execlp(a[0],a[2],a[1],NULL) == -1) {
+					if (execlp(a[0],a[0],a[1],NULL) == -1) {
 						printf("NO SUCH PROGRAM OR DIRECTORY\n");
 	   						status = 1;
 	   						exit(1);
@@ -63,7 +56,7 @@ int main() {
 	   			} else {
 	   				if (j == 0) {
 	 
-	   					if (execlp(a[0],a[2],NULL) == -1) {
+	   					if (execlp(a[0],a[0],NULL) == -1) {
 	   						printf("NO SUCH PROGRAM OR DIRECTORY\n");
 	   						status = 1;
 	   						exit(1);
